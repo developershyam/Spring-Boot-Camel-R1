@@ -1,5 +1,7 @@
 package com.sample.service;
 
+import java.util.Arrays;
+
 import org.apache.camel.CamelContext;
 import org.apache.camel.ProducerTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +20,7 @@ public class JMSServiceImpl implements JMSService {
 
 	@Autowired
 	CamelContext camelContext;
-	
+
 	@Autowired
 	ProducerTemplate producerTemplate;
 
@@ -32,10 +34,24 @@ public class JMSServiceImpl implements JMSService {
 				"JMS message with Apache Camel !!!", true, false);
 
 		try {
-
-			producerTemplate.sendBody("jms:myQueue", message);
 			System.out.println("********** Your message is published  "
 					+ message + "  **********");
+			producerTemplate.sendBody("jms:myQueue", message);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	@Override
+	public void publishMessageSum(int val[]) {
+
+		try {
+			System.out.println("********** Your message is published bean.sum "
+					+ Arrays.toString(val) + "  **********");
+			producerTemplate.sendBody("jms:bean.sum", val);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

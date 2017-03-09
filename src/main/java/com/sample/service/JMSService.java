@@ -8,6 +8,7 @@ package com.sample.service;
 public interface JMSService {
 
 	void publishJMSMessage();
+	void publishMessageSum(int val[]) ;
 	
 	
 }

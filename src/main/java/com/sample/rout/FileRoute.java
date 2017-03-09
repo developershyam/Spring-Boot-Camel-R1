@@ -1,4 +1,4 @@
-package com.sample.jms;
+package com.sample.rout;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
-public class FileCamelRouter extends RouteBuilder {
+public class FileRoute extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
@@ -23,8 +23,8 @@ public class FileCamelRouter extends RouteBuilder {
 				Message message = exchange.getIn();
 				System.out.println("Sending file: "
 						+ message.getHeader("CamelFileName"));
-				String fileData = message.getBody(String.class);
-				System.out.println(fileData);
+				//String fileData = message.getBody(String.class);
+				//System.out.println(fileData);
 				System.out.println("##########  File content received  ##########");
 			}
 		}).to("file:"+userHome+"/camel/output");
