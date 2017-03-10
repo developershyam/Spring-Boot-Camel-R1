@@ -19,7 +19,7 @@ public class WebController {
 	@Autowired
 	private JMSService jmsService;
 
-	String INFO = "{ JMS BaseURL ==> /publishJMSMessage, Bean Sum BaseURL ==> /publishMessageSum?input=1,2,3}";
+	String INFO = "{ JMSPublishMessageURL ==> /publishJMSMessage, PublishMessageBeanRefURL ==> /publishMessageSum?input=1,2,3}";
 
 	@RequestMapping("/")
 	public String home() {
